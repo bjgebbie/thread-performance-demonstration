@@ -9,7 +9,7 @@ void *thread_function(void *arg) {
 	pthread_exit((void *)&retval);
 }
 
-pthread_t *create_threads(pthread_t *thread_ids) {
+void create_threads(pthread_t *thread_ids) {
 	for (int i = 0; i < NUMBER_OF_THREADS; i++) {
 		pthread_t thread_id;
 
@@ -19,8 +19,6 @@ pthread_t *create_threads(pthread_t *thread_ids) {
 
 		thread_ids[i] = thread_id;
 	}
-
-	return thread_ids;
 }
 
 void join_threads(pthread_t *thread_ids) {
