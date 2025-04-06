@@ -1,15 +1,9 @@
-#include "../constants/constants.h"
+#include "constants.h"
 #include <pthread.h>
 #include <stdint.h>
 #include <stdio.h>
 
-void *thread_function(void *arg) {
-	const int retval = 1;
-
-	pthread_exit((void *)&retval);
-}
-
-void create_threads(pthread_t *thread_ids) {
+void create_threads(pthread_t *thread_ids, void *thread_function) {
 	for (int i = 0; i < NUMBER_OF_THREADS; i++) {
 		pthread_t thread_id;
 
