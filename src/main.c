@@ -19,25 +19,21 @@ void populate(uint64_t *integers, uint32_t size) {
 }
 
 int main() {
-	uint64_t size = 100000000;
-	printf("here\n");
+	uint64_t size = 100;
 	uint64_t *integers = (uint64_t *)malloc(size * sizeof(uint64_t));
 	populate(integers, size);
 
 	Integers ints = {integers, size};
 
-	void *ret_vals;
+	void *ret_vals[NUMBER_OF_THREADS];
 	pthread_t thread_ids[NUMBER_OF_THREADS];
 	create_threads(thread_ids, sum, (void *)&ints);
-
-	//	join_threads(thread_ids, ret_vals);
-	if (pthread_join(thread_ids[0], &ret_vals) != 0) {
-		perror("Failed to join thread");
+	join_threads(thread_ids, ret_vals);
+	for (uint8_t i = 0; i < NUMBER_OF_THREADS; i++) {
+		uint64_t *ret_val = (uint64_t *)ret_vals[i];
+		printf("Sum is: %lu\n", *ret_val);
 	}
-	uint64_t *r = (uint64_t *)ret_vals;
 
-	printf("Sum is: %lu\n", *r);
-	free(r);
 	free(integers);
 
 	printf("Main thread: New thread has finished execution.\n");
