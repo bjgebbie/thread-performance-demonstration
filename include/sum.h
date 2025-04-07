@@ -1,2 +1,1 @@
-
-void *sum();
+void *sum(void *arg);
