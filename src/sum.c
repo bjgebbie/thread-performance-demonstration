@@ -5,6 +5,7 @@
 
 void *sum(void *arg) {
 	Integers *ints = (Integers *)arg;
+	// TODO: See if this is really necessary
 	uint64_t *sum = malloc(sizeof(uint64_t));
 	*sum = 0;
 	for (int i = 0; i < ints->size; i++) {

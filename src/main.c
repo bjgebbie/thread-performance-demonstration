@@ -12,13 +12,14 @@ int main() {
 	uint64_t size = 100;
 	uint64_t *integers = (uint64_t *)malloc(size * sizeof(uint64_t));
 	populate(integers, size);
-
+	// TODO: make populate() take the Ingtegers struct
 	Integers ints = {integers, size};
 
 	void *ret_vals[NUMBER_OF_THREADS];
 	pthread_t thread_ids[NUMBER_OF_THREADS];
 	create_threads(thread_ids, sum, (void *)&ints);
 	join_threads(thread_ids, ret_vals);
+
 	uint64_t *ret_val = (uint64_t *)ret_vals[NUMBER_OF_THREADS - 1];
 	printf("Sum is: %lu\n", *ret_val);
 
