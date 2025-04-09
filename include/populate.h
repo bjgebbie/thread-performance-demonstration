@@ -1,4 +1,8 @@
+#include "integers.h"
 #include <stdint.h>
 
-// TODO: add comment
-void populate(uint64_t *integers, uint32_t size);
+/**
+ * Takes an `Integers*` and populates the `Integers->values` field with random
+ * `uint8_t`
+ */
+void populate(Integers *ints);

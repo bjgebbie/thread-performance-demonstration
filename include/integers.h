@@ -1,7 +1,10 @@
+#ifndef INTEGERS_H
+#define INTEGERS_H
 #include <stdint.h>
 #include <sys/types.h>
 
 typedef struct {
-	uint64_t *values;
+	uint8_t *values;
 	uint32_t size;
 } Integers;
+#endif
